@@ -1,0 +1,23 @@
+rate_limits:
+  - actions:
+       endpoint: '/product-recommendation/:id/*'
+       method: GET
+       from: "header"
+       keys: "id"
+       requests_per_unit: 1
+       unit: minute
+       header_key: "deneme"
+  - actions:
+       endpoint: '/product-recommendation/deneme/:id/test/*'
+       method: GET
+       from: "query"
+       keys: "page,size"
+       requests_per_unit: 5
+       unit: minute
+  - actions:
+       endpoint: '/product-recommendation/*'
+       method: POST
+       from: "body"
+       body_keys: "supplierId"
+       requests_per_unit: 5
+       unit: hour
